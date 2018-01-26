@@ -12,7 +12,7 @@ const buildTable = (height) => {
     div.style.color = 'white';
     div.style.borderColor = 'black';
     div.style.borderStyle = 'solid';
-    div.style.zIndex = '1';
+    div.style.zIndex = '2';
     div.innerHTML = 'wall';
 
     document.getElementById('container').appendChild(div);
@@ -32,9 +32,11 @@ const revealWater = (obj) => {
   let water = document.createElement('div');
   let widthCalc = obj.waterArea.end - obj.waterArea.start;
   let heightCalc = heightComparer([startH, endH]);
+  water.style.position = 'absolute';
   water.style.marginTop = '0px';
   water.style.bottom = '0px';
-  water.style.left = `${(startH * 100) + 'px'}`;
+  water.style.zINdex = '1';
+  water.style.left = `${(obj.waterArea.start * 100) + 'px'}`;
   water.style.width = `${(100 * widthCalc) + 'px'}`;
   water.style.height = `${(heightCalc[0] * 100) + 'px'}`
   water.style.background = 'turquoise';
