@@ -10,7 +10,6 @@ const calculate = (arr) => {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res, 'inside fetch')
         resolve(res)
       })
       .catch(err => console.log(err))
