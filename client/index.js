@@ -20,22 +20,21 @@ const buildTable = (height) => {
 };
 
 const revealWater = (obj) => {
-  console.log(obj);
   let startH = obj.waterArea.startHeight;
   let endH = obj.waterArea.endHeight;
-  document.getElementById('answer').innerHTML = "";
+  let widthCalc = obj.waterArea.end - obj.waterArea.start;
+  let heightCalc = heightComparer([startH, endH]);
+  let water = document.createElement('div');
   let span = document.createElement('span');
   let answer = document.createTextNode(obj.waterArea.maxW.toString() + ' units is the max water area');
+  document.getElementById('answer').innerHTML = "";
   span.style.color = "blue";
   span.appendChild(answer);
   document.getElementById('answer').appendChild(span);
-  let water = document.createElement('div');
-  let widthCalc = obj.waterArea.end - obj.waterArea.start;
-  let heightCalc = heightComparer([startH, endH]);
   water.style.position = 'absolute';
   water.style.marginTop = '0px';
   water.style.bottom = '0px';
-  water.style.zINdex = '1';
+  water.style.zIndex = '1';
   water.style.left = `${(obj.waterArea.start * 100) + 'px'}`;
   water.style.width = `${(100 * widthCalc) + 'px'}`;
   water.style.height = `${(heightCalc[0] * 100) + 'px'}`
