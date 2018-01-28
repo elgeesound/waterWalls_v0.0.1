@@ -1,14 +1,18 @@
-const buildTable = (height) => {
+const buildTable = (height, res) => {
   document.getElementById('container').innerHTML = "";
   for (let i = 0; i < height.length; i++) {
     let div = document.createElement('div');
     div.style.position = 'fixed';
-    div.style.width = `${(100) + 'px'}`;
+    div.style.width = `${(70) + 'px'}`;
     div.style.float = 'left';
-    div.style.left = `${(i * 100) + 'px'}`;
-    div.style.height = `${(height[i] * 100) + 'px'}`;
+    div.style.left = `${(i * 75) + 'px'}`;
+    div.style.height = `${(height[i] * 75) + 'px'}`;
     div.style.bottom = '0px';
-    div.style.background = 'red';
+    if (i == res.waterArea.start || i == res.waterArea.end) {
+      div.style.background = 'black';
+    } else {
+      div.style.background = 'red';
+    };
     div.style.color = 'white';
     div.style.borderColor = 'black';
     div.style.borderStyle = 'solid';
@@ -35,9 +39,9 @@ const revealWater = (obj) => {
   water.style.marginTop = '0px';
   water.style.bottom = '0px';
   water.style.zIndex = '1';
-  water.style.left = `${(obj.waterArea.start * 100) + 'px'}`;
-  water.style.width = `${(100 * widthCalc) + 'px'}`;
-  water.style.height = `${(heightCalc[0] * 100) + 'px'}`
+  water.style.left = `${(obj.waterArea.start * 75) + 'px'}`;
+  water.style.width = `${(75 * widthCalc) + 'px'}`;
+  water.style.height = `${(heightCalc[0] * 75) + 'px'}`
   water.style.background = 'turquoise';
   document.getElementById('container').appendChild(water);
 };
@@ -46,8 +50,8 @@ document.querySelector('#height').addEventListener('submit', (e) => {
   e.preventDefault();
   let rawInput = document.querySelector('input[type=input]').value;
   let convertedInput = { height: strNumConverter(rawInput) };
-  buildTable(convertedInput.height);
   calculate(convertedInput).then((res) => {
+    buildTable(convertedInput.height, res);
     revealWater(res);
   });
 });
