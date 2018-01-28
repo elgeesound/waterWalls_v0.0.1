@@ -1,4 +1,4 @@
-const maxArea = require('../server/helpers/findWater.js');
+const maxArea = require('../server/helpers/find-water.js');
 
 test('maxArea func succesfully find the most water between two towers', () => {
   expect(maxArea([7, 2, 5, 3, 6, 4]).maxW).toBe(24)

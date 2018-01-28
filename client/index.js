@@ -50,6 +50,7 @@ document.querySelector('#height').addEventListener('submit', (e) => {
   e.preventDefault();
   let rawInput = document.querySelector('input[type=input]').value;
   let convertedInput = { height: strNumConverter(rawInput) };
+  document.querySelector('input[type=input]').value = '';
   calculate(convertedInput).then((res) => {
     buildTable(convertedInput.height, res);
     revealWater(res);
