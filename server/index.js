@@ -2,11 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-const cors = require('cors');
 const waterCalc = require('./routes/water-calc.js').waterCalc;
 const port = 8080;
 
-app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
